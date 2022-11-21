@@ -1,12 +1,26 @@
 {
-  "name": "chat-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "rutvik-chat-app",
+  "version": "0.1.6",
+  "private": false,
+  "author": {
+    "name":"Rutvik Patel",
+    "email":"rutvikpatel90990@gmail.com"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build-library" : "vue-cli-service build --target lib --name rutvik-chat-app ./src/install.js"
   },
+  "repository": "https://github.com/rutvik-patel8/chat-app",
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
+  "main": "dist/rutvik-chat-app.common.js",
   "dependencies": {
     "core-js": "^3.6.5",
     "socket.io-client": "^4.5.3",

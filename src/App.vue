@@ -1,36 +1,14 @@
 <template>
-  <div id="app">
-    <h2>Chat App</h2>
-    <input
-      v-if="isInput"
-      type="text"
-      placeholder="enter message"
-      v-model="name"
-      @keyup.enter="setName()"
-    />
-    <div v-else>
-      NAME: <b>{{ name }}</b>
-    </div>
-    <br />
-    <h3>{{ description }}</h3> <br>
-    <div v-for="msg in messages" :key="msg.id">
-      <div>
-        <b>{{ msg.name }}</b>:{{ msg.msg }}
-      </div><br>
-    </div>
-    <input
-      type="text"
-      placeholder="enter message"
-      v-model="input"
-      @keyup.enter="sendMsg()"
-    />
-  </div>
+   <div>
+     <chat-app></chat-app>
+   </div>
 </template>
 
 <script>
 import { io } from "socket.io-client";
 const URL = "http://localhost:3000";
 const socket = io(URL);
+import ChatApp from "./install";
 export default {
   data() {
     return {
@@ -42,6 +20,9 @@ export default {
       name: "",
       isInput: true,
     };
+  },
+  components:{
+    ChatApp
   },
   created() {
     fetch("http://localhost:3000/history")
@@ -96,7 +77,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
